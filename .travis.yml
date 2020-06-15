@@ -6,7 +6,7 @@ script:
 
 deploy:	
   provider: heroku	
-   app: f3sh0t	
+   app: arcane-ocean-22216	
   api_key:	
     secure: 34864e62-2e4c-4bbb-8886-e6f56ad9da07
   skip_cleanup: true
