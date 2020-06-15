@@ -4,3 +4,8 @@ node_js:
 script:
   - npm install -g grunt-cli
 
+deploy:	
+  provider: heroku	
+   app: f3sh0t	
+  api_key:	
+    secure: 34864e62-2e4c-4bbb-8886-e6f56ad9da07
