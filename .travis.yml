@@ -10,5 +10,8 @@ deploy:
   api_key:	
     secure: dF5IyJmrjKLfn8ojiG0jZ6kG1qN1xRopgdQU/0p+3Rxe2V19AXs/4s84EHwEtAWF+hh6IVLWOP8QiPoLvOX+BTQ89mGT4uJ3q1MPJzao6R5zBgu5WoLvRZZxKhDFvzYUzubLMQfxr8KJbC9vE+TTwOo11YPaRNwPD4e4+esWcLOoExL+vLhR5gvxa6tdKgojuCKGQKcB+u1S8HVGKgBw3/GP35Gc9ZEUBuLejZu39Thm8gkounxSBrXv8EybywkXIzqHHE1gUsYwuIMyUY7qvYpRI3FK388nQLJDYyO0WHfj/hWK9RbGJwTcq77WL6QKPwCkX/gjWcCJZsth8lHAEauaZPWHBKHzR/nbxJvi3/IBF1Ak4YCesHavZPcfzyjhr3H+zA3nt9KYsI7VVPsMYJSK5LeiceePM7sWAziCkmHKoOX5+py/Rxzbpt/tnd7Nu1A/NIBOeDu/Sl8Mp7nL6RlPu2HaFFelOIhJI58KFUsNpwEq63UknIpQTGtsGXPbMoLLGuxEqsjEF0BMeb4md8XODbOPHaH4h+OrGCYw552UaZeV/jdSnMwhT+6XtZD6cekkwYmZaef3QuaxFrOZlbeduScd6/niMcGywWX7GQErhb8KVXxhhfjbHcnQrQd6Ni9cdxRur/uhvmIudWokiJeFumk/7QgnF/z/W49+hAU=
   skip_cleanup: true
-after_deploy:
-  - docker run -i owasp/zap2docker-stable zap-cli quick-scan --self-contained --start-options '-config api.disablekey=true' https://arcane-ocean-22216.herokuapp.com/ -l Medium -l Low
+env:
+  - HUSKY_DEBUG=1
+script:
+  - sh ./scripts/test-install.sh
+  - npm test
